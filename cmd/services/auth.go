@@ -4,6 +4,7 @@ import (
 	"errors"
 	"log"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
@@ -20,7 +21,12 @@ type jwtService struct {
 }
 
 func getSecretKeyJWT() []byte {
-	err := godotenv.Load()
+	wd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	envPath := filepath.Dir(wd) + "\\.env"
+	err = godotenv.Load(envPath)
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}

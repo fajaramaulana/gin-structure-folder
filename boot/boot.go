@@ -1,9 +1,9 @@
-package boot
+package main
 
 import (
 	"go-structure-folder-clean/routes"
 )
 
-func Run() {
+func main() {
 	routes.Init()
 }

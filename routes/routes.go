@@ -7,6 +7,7 @@ import (
 	"go-structure-folder-clean/configs/connections"
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -17,9 +18,15 @@ func Init() {
 
 	db := connections.ConnectionDb()
 
-	err := godotenv.Load()
+	wd, err := os.Getwd()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		panic(err)
+	}
+	envPath := filepath.Dir(wd) + "\\.env"
+	err = godotenv.Load(envPath)
+	if err != nil {
+		// log.Fatal("Error loading .env file")
+		log.Fatal(err.Error())
 	}
 
 	modeGin := os.Getenv("GIN_MODE")

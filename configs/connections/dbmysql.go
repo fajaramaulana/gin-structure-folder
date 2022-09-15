@@ -3,6 +3,7 @@ package connections
 import (
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
@@ -10,9 +11,14 @@ import (
 )
 
 func ConnectionDb() *gorm.DB {
-	err := godotenv.Load()
+	wd, err := os.Getwd()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		panic(err)
+	}
+	envPath := filepath.Dir(wd) + "\\.env"
+	err = godotenv.Load(envPath)
+	if err != nil {
+		log.Fatal("Error loading .env file1")
 	}
 	dsn := os.Getenv("MYSQL")
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
