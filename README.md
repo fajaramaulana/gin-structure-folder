@@ -30,8 +30,8 @@ JWT_SECRET_KEY= [YOUR JWT SECRET KEY]
 ## Run application
 ### Locally
 
--   Run `go run main.go app:serve` to start the server.
--   There are other commands available as well. You can run `go run main.go -help` to know about other commands available.
+-   move to folder `/boot/`
+-   Run `go run boot.go` to start the server.
 
 ---
 
