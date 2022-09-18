@@ -39,30 +39,18 @@ JWT_SECRET_KEY= [YOUR JWT SECRET KEY]
 
 | Folder Path                      | Description                                                                                         |
 | -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `/api`                           | contains all the `middlwares`, `controllers` and `routes` of the server in their respective folders |
-| `/api-errors`                    | server error handlers                                                                               |
-| `/bootstrap`                     | contains modules required to start the application                                                  |
-| `/console`                       | server commands, run `go run main.go -help` for all the available server commands                   |
-| `/constants`                     | global application constants                                                                        |
-| `/docker`                        | `docker` files required for `docker compose`                                                        |
-| `/docs`                          | API endpoints documentation using `swagger`                                                         |
-| `/hooks`                         | `git` hooks                                                                                         |
-| `/infrastructure`                | third-party services connections like `gmail`, `firebase`, `s3-bucket`, ...                         |
-| `/lib`                           | contains library code                                                                               |
-| `/migration`                     | database migration files                                                                            |
-| `/models`                        | ORM models                                                                                          |
-| `/repository`                    | contains repository part of clean architecture. Mainly database queries are added here.             |
-| `/seeds`                         | seeds for already migrated tables                                                                   |
-| `/services`                      | service layers, contains the functionality that compounds the core of the application               |
-| `/tests`                         | includes application tests                                                                          |
-| `/utils`                         | global utility/helper functions                                                                     |
-| `.env.example`                   | sample environment variables                                                                        |
-| `dbconfig.yml`                   | database configuration file for `sql-migrate` command                                               |
-| `docker-compose.yml`             | `docker compose` file for service application via `Docker`                                          |
-| `main.go`                        | entry-point of the server                                                                           |
-| `Makefile`                       | stores frequently used commands; can be invoked using `make` command                                |
-| `serviceAccountKey.json.example` | sample credentials file for accessing Google Cloud                                                  |
-
+| `/boot`                           | contains package main / entry-point of the server |
+| `/cmd`                           | contains `controllers`, `entity`, `repositories`, `request`, and `services` |
+| `/cmd/controllers`                           | The `controllers` layer is the last before the data goes to your Frontend or app. You can handle errors or map the response to accommodate your needs. |
+| `/cmd/entity`                           | The `entity` layer is which stores the interface and abstraction from data. |
+| `/cmd/repositories`                           | The `repositories` layer is where we Create, Get, Update or Delete data within a database. If you get data from the database, the data passing to the next layer should be raw or unprocessed data that comes directly from the database. |
+| `/cmd/request`                           | The `request` is which stores the interface and abstraction from request. |
+| `/cmd/services`                      | service layers, contains the functionality that compounds the core of the application               |
+| `/config`                      | contains `connections`, `middleware`               |
+| `/config/connections`                    |  the functionality connection to the database, redis                                                       |
+| `/config/middleware`                     | the functionality for JWT validate and create token, and CORS                                                  |
+| `/pkg`                       | contains all helper for the app.                   |
+| `/routes`                     | contains routes
 ---
 
 ## Contributing
